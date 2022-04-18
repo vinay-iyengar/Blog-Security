@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: print-date
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: print-date
+              image: node:14-alpine
+              imagePullPolicy: IfNotPresent
+              args:
+                - com.learning.blogSecurity.CronRunJob
+          restartPolicy: Never
